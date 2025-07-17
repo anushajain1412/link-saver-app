@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import './Dashboard.css'; // Ensure this CSS file exists and is linked
 
+// Define your deployed backend URL here
+const BACKEND_BASE_URL = 'https://link-saver-api-1coe.onrender.com';
+
 function Dashboard({ onLogout }) {
     const [urlInput, setUrlInput] = useState('');
     const [tagInput, setTagInput] = useState(''); // State for the tag input field
@@ -43,7 +46,7 @@ function Dashboard({ onLogout }) {
                 return;
             }
 
-            const response = await fetch('http://localhost:5000/api/links', {
+            const response = await fetch(`${BACKEND_BASE_URL}/api/links`, {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
 
@@ -104,7 +107,7 @@ function Dashboard({ onLogout }) {
                 return;
             }
 
-            const response = await fetch('http://localhost:5000/api/links', {
+            const response = await fetch(`${BACKEND_BASE_URL}/api/links`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,7 +154,7 @@ function Dashboard({ onLogout }) {
                     return;
                 }
 
-                const response = await fetch(`http://localhost:5000/api/links/${id}`, {
+                const response = await fetch(`${BACKEND_BASE_URL}/api/links/${id}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': `Bearer ${token}` },
                 });
@@ -198,7 +201,7 @@ function Dashboard({ onLogout }) {
             }
 
             const orderedLinkIds = items.map(link => link.id); // Get the new order of link IDs
-            await fetch('http://localhost:5000/api/links/reorder', {
+            await fetch(`${BACKEND_BASE_URL}/api/links/reorder`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
