@@ -1,0 +1,19 @@
+/* client/src/components/Dashboard.css */
+/* This file can be used for styles specific to the Dashboard component.
+   For this project, most dashboard-related styles are already in App.css for simplicity.
+   You can move or add more specific styles here if your project grows. */
+
+/* Specific styling for draggable elements when being dragged */
+.link-card[data-rbd-draggable-context-id] {
+    /* Styles that apply when an item is actively being dragged */
+    transform: rotate(2deg); /* Slightly rotate the card when dragged */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow for dragged item */
+}
+
+/* Styles for the droppable area when an item is dragged over it */
+.links-grid.dragging-over {
+    background-color: #e6f7ff; /* Light blue background to indicate droppable area */
+    border: 2px dashed #91d5ff; /* Dashed blue border */
+    border-radius: 12px; /* Match main container border-radius */
+    transition: all 0.2s ease-in-out; /* Smooth transition for visual feedback */
+}

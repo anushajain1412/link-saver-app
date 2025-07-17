@@ -1,0 +1,413 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5; /* Light grey background */
+  color: #333; /* Dark grey text */
+  line-height: 1.6;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh; /* Ensure app takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.loading-screen {
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 50px;
+}
+
+/* --- Auth Container (Login/Register) --- */
+.auth-container {
+  max-width: 400px;
+  width: 100%;
+  margin: auto; /* Center the container */
+  padding: 40px;
+  background: #fff;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+  text-align: center;
+}
+
+.auth-container h2 {
+  color: #2c3e50; /* Darker heading */
+  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.add-link-section input[type="url"] {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 8px; /* Rounded input fields */
+  font-size: 1em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.add-link-section input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* --- Buttons --- */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px; /* Rounded buttons */
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+}
+
+button:disabled {
+  background-color: #a0c4ff; /* Lighter blue when disabled */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* --- Messages --- */
+.error-message {
+  color: #dc3545; /* Red for errors */
+  margin-top: 15px;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #28a745; /* Green for success */
+  margin-top: 15px;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+/* --- Links in Auth Pages --- */
+.auth-container p {
+  margin-top: 25px;
+  font-size: 0.95em;
+  color: #555;
+}
+
+.auth-container p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-container p a:hover {
+  text-decoration: underline;
+}
+
+/* --- Dashboard Specific Styles (general layout) --- */
+.dashboard-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-header h1 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
+.logout-button {
+  background-color: #6c757d; /* Grey for logout */
+  box-shadow: 0 4px 10px rgba(108, 117, 125, 0.2);
+}
+
+.logout-button:hover:not(:disabled) {
+  background-color: #5a6268;
+  box-shadow: 0 6px 15px rgba(108, 117, 125, 0.3);
+}
+
+.add-link-section {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.add-link-section form {
+  display: flex;
+  flex-grow: 1;
+  gap: 15px;
+}
+
+.add-link-section input {
+  flex-grow: 1;
+}
+
+.no-links-message {
+  color: #666;
+  font-style: italic;
+  margin-top: 30px;
+  font-size: 1.1em;
+}
+
+/* --- Filter Section --- */
+.filter-section {
+  margin-bottom: 25px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.filter-section select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dcdfe6;
+  font-size: 1em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #fdfdfd;
+  cursor: pointer;
+}
+
+.filter-section select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* --- Responsive Grid for Links --- */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* --- Link Card Styles --- */
+.link-card {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px; /* Ensures consistent card height */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: grab; /* Indicate draggable */
+}
+
+.link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.link-card.is-dragging { /* Style for when an item is being dragged */
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+.link-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.link-favicon {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.link-title {
+  font-size: 1.2em;
+  margin: 0;
+  color: #007bff;
+  text-decoration: none;
+  word-break: break-word; /* Prevent long titles from overflowing */
+  font-weight: 600;
+}
+
+.link-summary {
+  font-size: 0.95em;
+  color: #555;
+  flex-grow: 1; /* Allows summary to take available space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit summary to 4 lines */
+  -webkit-box-orient: vertical;
+  margin-bottom: 15px;
+}
+
+.link-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Push actions to the bottom */
+}
+
+.link-actions .view-button {
+  background-color: #28a745; /* Green for view */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.2);
+}
+
+.link-actions .view-button:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.link-actions .delete-button {
+  background-color: #dc3545; /* Red for delete */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+}
+
+.link-actions .delete-button:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+/* --- Tags --- */
+.link-tags {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee; /* Separator for tags */
+}
+
+.tag {
+  background-color: #e9ecef; /* Light grey tag background */
+  color: #495057;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent tags from breaking */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .dashboard-container, .auth-container {
+      margin: 20px;
+      padding: 25px;
+  }
+
+  .dashboard-header {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+  }
+
+  .dashboard-header h1 {
+      font-size: 1.8em;
+  }
+
+  .add-link-section {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .add-link-section form {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .links-grid {
+      grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  button {
+      width: 100%; /* Full width buttons on small screens */
+      padding: 10px 15px;
+  }
+
+  .form-group input {
+      width: calc(100% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+      padding: 20px;
+  }
+
+  .dashboard-container {
+      padding: 20px;
+  }
+
+  .dashboard-header h1 {
+      font-size: 1.5em;
+  }
+}
