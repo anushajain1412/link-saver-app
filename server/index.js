@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt"); // For password hashing
 const jwt = require("jsonwebtoken"); // For JWT
 const fs = require("fs").promises; // For file system operations (to manage db.json)
 const path = require("path"); // For path resolution
+const cors = require('cors');
 require("dotenv").config(); // Load environment variables from .env file
 
 const app = express();
